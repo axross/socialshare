@@ -63,8 +63,38 @@
         if (processCount === 3) callback(self);
       });
     };
-    Socialshare.prototype.openShareWindow = function() {
+    Socialshare.prototype.openHatebuShareWindow = function(text) {
+      var text = text || '';
+      var url = 'http://b.hatena.ne.jp/add?mode=confirm&url=' + this.url + '&title=' + text;
+      var subWindow = window.open(
+        url,
+        'ssHatebuWindow',
+        'dialog=yes,width=506,height=330'
+      );
 
+      return;
+    };
+    Socialshare.prototype.openTwitterShareWindow = function(text) {
+      var text = text || '';
+      var url = 'http://twitter.com/share?url=' + this.url + '&text=' + text;
+      var subWindow = window.open(
+        url,
+        'ssTwitterWindow',
+        'dialog=yes,width=640,height=258'
+      );
+
+      return;
+    };
+    Socialshare.prototype.openFacebookShareWindow = function(text) {
+      var text = text || '';
+      var url = 'http://www.facebook.com/sharer.php?u=' + this.url + '&t=' + text;
+      var subWindow = window.open(
+        url,
+        'ssFacebookWindow',
+        'dialog=yes,width=640'
+      );
+
+      return;
     };
 
     var socialshare = new Socialshare(url, callback);

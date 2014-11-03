@@ -7,13 +7,16 @@
   <script src="../socialshare.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      var $form           = document.getElementById('form');
-      var $url            = document.getElementById('url');
-      var $resultUrl      = document.getElementById('resultUrl');
-      var $resultHatebu   = document.getElementById('resultHatebu');
-      var $resultTwitter  = document.getElementById('resultTwitter');
-      var $resultFacebook = document.getElementById('resultFacebook');
-      var $fetchButton    = document.getElementById('fetchButton');
+      var $form                = document.getElementById('form');
+      var $url                 = document.getElementById('url');
+      var $resultUrl           = document.getElementById('resultUrl');
+      var $resultHatebu        = document.getElementById('resultHatebu');
+      var $resultTwitter       = document.getElementById('resultTwitter');
+      var $resultFacebook      = document.getElementById('resultFacebook');
+      var $fetchButton         = document.getElementById('fetchButton');
+      var $hatebuShareButton   = document.getElementById('hatebuShareButton');
+      var $twitterShareButton  = document.getElementById('twitterShareButton');
+      var $facebookShareButton = document.getElementById('facebookShareButton');
       var ss;
 
       $form.addEventListener('submit', function(event) {
@@ -32,6 +35,18 @@
       $fetchButton.addEventListener('click', function(event) {
         ss.fetch();
       }, false);
+
+      $hatebuShareButton.addEventListener('click', function(event) {
+        ss.openHatebuShareWindow(document.title);
+      }, false);
+
+      $twitterShareButton.addEventListener('click', function(event) {
+        ss.openTwitterShareWindow(document.title);
+      }, false);
+
+      $facebookShareButton.addEventListener('click', function(event) {
+        ss.openFacebookShareWindow(document.title);
+      }, false);
     });
   </script>
 </head>
@@ -46,6 +61,9 @@
     <li id="resultTwitter"></li>
     <li id="resultFacebook"></li>
     <li><a id="fetchButton" href="#">Fetch</a></li>
+    <li><a id="hatebuShareButton" href="#">Share on Hatena bookmark</a></li>
+    <li><a id="twitterShareButton" href="#">Share on Twitter</a></li>
+    <li><a id="facebookShareButton" href="#">Share on Facebook</a></li>
   </ul>
 </body>
 </html>

@@ -6,7 +6,7 @@ Share URL and count on Hatena bookmark, Twitter and Facebook.
 
 ## Installation
 
-use with browserify:
+Use with Browserify:
 
 ```javascript
 var socialshare = require('socialshare');
@@ -15,9 +15,11 @@ var googleSS = socialshare('http://google.com', function(ss) {
   console.log(ss.url);
   console.log(ss.hatebu.value, ss.twitter.value, ss.facebook.value);
 });
+
+googleSS.openTwitterShareWindow('page title');
 ```
 
-otherwise:
+Otherwise:
 
 ```javascript
 window.socialshare;  // is referrense to socialshare.
@@ -25,14 +27,20 @@ window.socialshare;  // is referrense to socialshare.
 
 ## Examples
 
-in `examples/index.html`.
+In `examples/index.html`.
 
 ## API
 
 ### socialshare(url, [callback])
 
-generate socialshare instance.
+Generate socialshare instance.
 
 #### socialshare#fetch([callback])
 
-Re-fetch social counts.  
+Re-fetch social counts.
+
+#### socialshare#openHatebuShareWindow([pageTitle])
+#### socialshare#openTwitterShareWindow([pageTitle])
+#### socialshare#openFacebookShareWindow([pageTitle])
+
+Open small share window.

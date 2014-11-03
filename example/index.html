@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Socialshare.js example</title>
+
+  <script src="../socialshare.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var $form           = document.getElementById('form');
+      var $url            = document.getElementById('url');
+      var $resultUrl      = document.getElementById('resultUrl');
+      var $resultHatebu   = document.getElementById('resultHatebu');
+      var $resultTwitter  = document.getElementById('resultTwitter');
+      var $resultFacebook = document.getElementById('resultFacebook');
+      var $fetchButton    = document.getElementById('fetchButton');
+      var ss;
+
+      $form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        $resultUrl.textContent = 'fetching...';
+
+        ss = socialshare($url.value, function(ss) {
+          $resultUrl.textContent = ss.url;
+          $resultHatebu.textContent = ss.hatebu.value;
+          $resultTwitter.textContent = ss.twitter.value;
+          $resultFacebook.textContent = ss.facebook.value;
+        });
+      }, false);
+
+      $fetchButton.addEventListener('click', function(event) {
+        ss.fetch();
+      }, false);
+    });
+  </script>
+</head>
+<body>
+  <form id="form">
+    <input type="text" id="url" placeholder="http://example.com">
+  </form>
+
+  <ul>
+    <li id="resultUrl"></li>
+    <li id="resultHatebu"></li>
+    <li id="resultTwitter"></li>
+    <li id="resultFacebook"></li>
+    <li><a id="fetchButton" href="#">Fetch</a></li>
+  </ul>
+</body>
+</html>
